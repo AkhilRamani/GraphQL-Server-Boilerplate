@@ -1,0 +1,33 @@
+enum EventType {
+  CLASS
+  ONE_ON_ONE
+  WORKSHOP
+}
+
+type Event {
+  id: ID!
+  name: String!
+  dateTime: String!
+  type: EventType!
+  location: Location!
+  description: String!
+  tags: [String!]
+  metaData: MetaData!
+}
+
+input CreateEventInput {
+  name: String!
+  dateTime: String!
+  type: EventType!
+  locationId: ID!
+  description: String!
+  tags: [String!]
+}
+
+input UpdateEventInput {
+  name: String
+  dateTime: String
+  type: EventType
+  description: String
+  tags: [String!]
+}

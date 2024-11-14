@@ -1,0 +1,56 @@
+scalar DateTime
+
+type MetaData {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum SortOrder {
+  ASC
+  DESC
+}
+
+input QueryOptionsInput {
+  page: Int
+  limit: Int
+  sortBy: String
+  sortOrder: SortOrder
+  search: String
+}
+
+type PageInfo {
+  currentPage: Int!
+  totalPages: Int!
+  totalItems: Int!
+  itemsPerPage: Int!
+}
+
+type PaginatedEvents {
+  events: [Event!]!
+  pageInfo: PageInfo!
+}
+
+type PaginatedLocations {
+  locations: [Location!]!
+  pageInfo: PageInfo!
+}
+
+type Query {
+  locations(options: QueryOptionsInput): PaginatedLocations!
+  location(id: ID!): Location
+  
+  event(id: ID!): Event
+  events(options: QueryOptionsInput): PaginatedEvents!
+  eventsByLocation(locationId: ID!, options: QueryOptionsInput): PaginatedEvents!
+}
+
+type Mutation {
+  createLocation(input: CreateLocationInput!): Location!
+  updateLocation(id: ID!, input: UpdateLocationInput!): Location!
+  deleteLocation(id: ID!): Boolean!
+
+  createEvent(input: CreateEventInput!): Event!
+  updateEvent(id: ID!, input: UpdateEventInput!): Event!
+  deleteEvent(id: ID!): Boolean!
+}
+

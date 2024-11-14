@@ -1,0 +1,13 @@
+type Location {
+  id: ID!
+  name: String!
+  metaData: MetaData!
+}
+
+input CreateLocationInput {
+  name: String!
+}
+
+input UpdateLocationInput {
+  name: String!
+}

@@ -1,0 +1,12 @@
+node_modules/
+npm-debug.log
+yarn-error.log
+
+.npm
+dist/
+
+# not ignoring .env file keeping in mind that this is interview exercise
+# .env
+
+.DS_Store
+.vscode/
